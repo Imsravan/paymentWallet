@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Paytem Wallet Theatre</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
+	<script src="https://kit.fontawesome.com/c35009fcc8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../vendors/base/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="/moviecss/moviecss.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../../images/favicon.png" />
+	<style>
+	.input100 {
+	font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
+	font-size: 15px;
+	color: #444;
+	outline:none;
+	border:none;
+	display: block;
+	width: 60%;
+	background: #e6e6e6;
+	height: 50px;
+	border-radius:5px;
+	padding: 0 30px 0 68px;
+	margin: 10px 0 10px;
+	}
+	.grid-container {
+	display: grid;
+	grid-column-gap: 50px;
+	grid-row-gap: 50px;
+	grid-template-columns: auto auto auto;
+	padding: 20px;
+	}
+
+	.grid-item {
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 2px solid rgba(0, 0, 0, 0.8);
+	padding: 30px;
+	font-size: 30px;
+	text-align: center;
+	}
+	h1 { color: #0A77BF; 
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-size: 70px; 
+		line-height: 160px; 
+		font-weight: normal;  
+		text-align: left; 
+		text-shadow: 0 1px 1px #fff; }
+	</style>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <%- include("partials/navbar.ejs"); -%>
+      <div class="main-panel">          
+        <div class="content-wrapper">
+			<h1>1. Select a movie.</h1>
+          <div class="row">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card">
+					<div class="grid-container">
+					  <% for( var i = 0 ; i< movies.length ; i++ ){ %>
+							<div class="card">
+							<img class="img-fluid" src="<%= movies[i].img %>" alt="Card image cap">
+							<div class="card-body" style="align-items:center;">
+							<h4 class="card-title"><%= movies[i].name %></h4>
+							<input class="movieInput btn btn-outline-primary" type="button" value="<%= movies[i].name %>" onClick="movieHandler(this.value)" placeholder="Select" required>
+							</div>
+							</div>
+					  <% } %> 
+					</div>
+              </div>
+          </div>
+        </div>
+		<div>
+			<form action="/tomovies" method="post">
+			  <input class="movieName" name="movieName" value="" hidden>
+			  <button class="proceedButton btn btn-primary" type="submit" disabled>Proceed</button>
+			</form>  
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->        
+		<!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha2564+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+  <script>
+	function movieHandler(value){
+		$(".movieName").val(value);
+		const movieSelected = ($(".movieName").val().length!==0)?true:false;
+		alert("You selected "+$('.movieName').val());
+		if (movieSelected){
+			$(".proceedButton").prop("disabled",false);
+		}
+		
+	}
+  </script>
+  <!-- endinject -->
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Paytm Wallet</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
+	<script src="https://kit.fontawesome.com/c35009fcc8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../vendors/base/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../../images/favicon.png" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <%- include("partials/navbar.ejs"); -%>
+    <!-- partial -->
+      <div class="main-panel">          
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card">
+                <div class="row">
+                  <div class="col-md-7">
+                    <div class="card-body">
+						<h4>Add Money to Wallet</h4>
+							<h4 class="money"><%=price %> </h4>
+							<% if(savedCards.length!=0){ %>
+							<% savedCards.forEach(item=>{ %>
+								<div class="item-section card w-50">
+									<div class="card-body">
+										<h5 class="card-title">Union Bank</h5>
+										<form action="/payment" method="POST">
+											<input class="" hidden id="custom-meal" type="number" name="cvv" value=<%= item.cvv %> >
+											<input class="" hidden id="custom-meal" type="number" name="price" value=<%= price %>>
+											<button  class="btn btn-custom btn-lg input2">Pay <%=price %></button>
+										  </form>
+									</div>
+								</div>
+						   <% });} %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+					<form class="form2" action="/creditcard" method="POST">
+							<label for="ccardNumber">ENTER YOUR DEBIT CARD NUMBER</label><br>
+							<input class="input4" type="tel"  inputmode="numeric"  id="ccardNumber cardnum"   maxlength="16" placeholder="XXXX-XXXX-XXXX-XXXX"  name="ccardNumber" value="" pattern="[1-9][0-9]{15}">
+							<span><i id="card-logo" class=""></i></span><br>
+							<label for="cExpiry">Expiry/ Validity Date</label><br>
+							<input class="input5" type="text" id="cExpiry" name="cExpiry" placeholder="MM/YY"><br>
+							<label for="CVV">CVV</label><br>
+							<input  class="input6" type="tel"   inputmode="numeric"  id="CCVV" name="CCVV" pattern="[0-9]{3}"><br>
+							<input class="btn2" type="submit" value="Submit">
+					</form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+					<form class="form2" action="/creditcard" method="POST">
+							<label for="ccardNumber">ENTER YOUR CREDIT CARD NUMBER</label><br>
+							<input class="input4" type="tel" inputmode="numeric" id="ccardNumber cardnum"  pattern="[789][0-9]{15}" minlength="15" maxlength="16" placeholder="XXXX-XXXX-XXXX-XXXX"  name="ccardNumber">
+							<span><i id="card-logo" class=""></i></span><br>
+							<label for="cExpiry">Expiry/ Validity Date</label><br>
+							<input class="input5" type="text" id="cExpiry" name="cExpiry" placeholder="MM/YY"><br>
+							<label for="CVV">CVV</label><br>
+							<input  class="input6" type="tel"    inputmode="numeric" id="CCVV" name="CCVV" pattern="[0-9]{3}"><br>
+							<input class="btn2" type="submit" value="Submit">
+					</form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->        
+		<!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+<script
+    src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+var s = '';
+var maestro = ["5018", "5020", "5038", "5893", "6304", "6759", "6761", "6762", "6763"];
+var mastercard = ["51","52","53","54","55"];
+
+$('input#cardnum').keypress((event)=>{
+    alert('Yo');
+    s += String(event.key);
+    if(s.substr(0,2)==='34'||s.substr(0,2)=='37'){
+    $('i#card-logo').attr('class','fab fa-cc-amex fa-2x');
+    }
+    else if(s.substr(0,1)=='4'){
+    $('i#card-logo').attr('class','fab fa-cc-visa fa-2x');
+}
+else if(maestro.includes(s.substr(0,4)))
+    {$('i#card-logo').text('Maestro')}
+    else if(mastercard.includes(s.substr(0,2))|| (parseInt(s.substr(0,6))>=222100 && parseInt(s.substr(0,6))<=272099)){
+    $('i#card-logo').attr('class','fab fa-cc-mastercard fa-2x');
+    }
+    
+});	
+</script>
+</body>
+
+</html>

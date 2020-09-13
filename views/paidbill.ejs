@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Paytem Wallet</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="moviecss/moviecss.css">
+  <script src="https://kit.fontawesome.com/c35009fcc8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../vendors/base/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../../images/favicon.png" />
+	
+
+</head>
+
+<body>
+  <div class="container-scroller">
+   <%- include("partials/navbar.ejs"); -%>
+    <!-- partial -->
+      <div class="main-panel">          
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card">
+                <div class="row">
+                  <div class="col-md-7">
+                    <div class="card-body">
+						<div class="jumbotron jumbotron-fluid">
+						<div class="container">
+						<h1 class="display-4" style="color:#79d70f;margin-bottom:10px;">Successfully paid your mobile bill <%=gbill%></h1>
+						
+						</div>
+						</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->        
+<!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="../../vendors/base/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/template.js"></script>
+	<script type="text/javascript">
+		function noBack(){window.history.forward()}
+		noBack();
+		window.onload=noBack;
+		window.onpageshow=function(evt){if(evt.persisted)noBack()}
+		window.onunload=function(){void(0)}
+	</script>
+	
+  <!-- endinject -->
+</body>
+
+</html>

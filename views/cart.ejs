@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<% var total = 0;%>
+<html lang="en">
+<head>
+<title>Cart</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Paytm project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="shopcss/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="shopcss/cart.css">
+<link rel="stylesheet" type="text/css" href="shopcss/cart_responsive.css">
+</head>
+<body>
+
+<div class="super_container">
+
+	<%- include("partials/shopheader.ejs"); -%>
+	<!-- Menu -->
+
+	<%- include("partials/menu.ejs"); -%>	
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_container">
+			<div class="home_background" style="background-image:url(/images/cart.jpg)"></div>
+			<div class="home_content_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="home_content">
+								<div class="breadcrumbs">
+									<ul>
+										<li><a href="/shop">Home</a></li>
+										<li><a href="/categories">Categories</a></li>
+										<li>Shopping Cart</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Cart Info -->
+
+	<div class="cart_info">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<!-- Column Titles -->
+					<div class="cart_info_columns clearfix">
+						<div class="cart_info_col cart_info_col_product">Product</div>
+						<div class="cart_info_col cart_info_col_price">Price</div>
+						<div class="cart_info_col cart_info_col_quantity">Quantity</div>
+						<div class="cart_info_col cart_info_col_total">Total</div>
+					</div>
+				</div>
+			</div>
+			<%if(items.length===0){%>
+				<h1 class="jumbotron" style="background-color: #ebe6e6;color:#4f98ef;">Cart is empty</h1>
+				<div class="button continue_shopping_button newsletter_button trans_200" style="margin-bottom: 55px;"><a href="/categories">Continue shopping</a></div>
+			<%}else{%>
+				<div class="row cart_items_row">
+					<div class="col">
+	
+						<!-- Cart Item -->
+						<% items.forEach( item => {%>
+							<div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+								<!-- Name -->
+								<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
+									<div class="cart_item_image">
+										<div><img src="/<%= item.img %>" alt=""></div>
+									</div>
+									<div class="cart_item_name_container">
+										<div class="cart_item_name"><a href="#"><%= item.name %></a></div>
+										<div class="cart_item_edit"><a href="#">Edit Product</a></div>
+									</div>
+								</div>
+								<!-- Price -->
+								<div class="cart_item_price"><%= item.price %></div>
+								<!-- Quantity -->
+								<div class="cart_item_quantity">
+									<div class="product_quantity_container">
+										<div class="product_quantity clearfix">
+											<span>Qty</span>
+											<input id="quantity_input" type="text" pattern="[0-9]*" value="<%=item.quantity%>">
+										</div>
+									</div>
+								</div>
+								<!-- Total -->
+								<div class="cart_item_total"><%=(item.price * item.quantity)%></div>
+								<div hidden><%= total += (item.price * item.quantity)%></div>
+							</div>
+		
+						<%});%>
+					</div>
+				</div>
+				<div class="row row_cart_buttons">
+					<div class="col">
+						<div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
+							<div class="button continue_shopping_button"><a href="/categories">Continue shopping</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="row row_extra">
+					<div class="col-lg-4">
+						
+						<!-- Delivery -->
+						<!-- <div class="delivery">
+							<div class="section_title">Shipping method</div>
+							<div class="section_subtitle">Select the one you want</div>
+							<div class="delivery_options">
+								<label class="delivery_option clearfix">Next day delivery
+									<input type="radio" name="radio">
+									<span class="checkmark"></span>
+									<span class="delivery_price">$4.99</span>
+								</label>
+								<label class="delivery_option clearfix">Standard delivery
+									<input type="radio" name="radio">
+									<span class="checkmark"></span>
+									<span class="delivery_price">$1.99</span>
+								</label>
+								<label class="delivery_option clearfix">Personal pickup
+									<input type="radio" checked="checked" name="radio">
+									<span class="checkmark"></span>
+									<span class="delivery_price">Free</span>
+								</label>
+							</div>
+						</div> -->
+	
+						<!-- Coupon Code
+						<div class="coupon">
+							<div class="section_title">Coupon code</div>
+							<div class="section_subtitle">Enter your coupon code</div>
+							<div class="coupon_form_container">
+								<form action="#" id="coupon_form" class="coupon_form">
+									<input type="text" class="coupon_input" required="required">
+									<button class="button coupon_button"><span>Apply</span></button>
+								</form>
+							</div>
+						</div> -->
+					</div>
+	
+					<div class="col-lg-6 offset-lg-2">
+						<div class="cart_total">
+							<div class="section_title">Cart total</div>
+							<div class="section_subtitle">Final info</div>
+							<div class="cart_total_container">
+								<ul>
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div class="cart_total_title">Subtotal</div>
+										<div class="cart_total_value ml-auto">Rs.<%=total%></div>
+									</li>
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div class="cart_total_title">Shipping</div>
+										<div class="cart_total_value ml-auto">Free</div>
+									</li>
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div class="cart_total_title">Total</div>
+										<div class="cart_total_value ml-auto">Rs.<%=total%></div>
+									</li>
+								</ul>
+							</div>
+							<form action="/cartbill" method="POST">
+								<input type="number" name="cbill" value="<%=total%>" hidden>
+								<button class="btn btn-primary" type="submit">Buy now<button>
+							</form>
+						</div>
+					</div>
+				</div>
+			<%}%>
+		</div>		
+	</div>
+
+	<!-- Footer -->
+	<%- include("partials/shopfooter.ejs"); -%>
+</div>
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/styles/bootstrap4/popper.js"></script>
+<script src="/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/plugins/greensock/TweenMax.min.js"></script>
+<script src="/plugins/greensock/TimelineMax.min.js"></script>
+<script src="/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="/plugins/greensock/animation.gsap.min.js"></script>
+<script src="/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="/plugins/easing/easing.js"></script>
+<script src="/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="/js/cart.js"></script>
+<script>
+	window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Paytm Mobile Recharge</title>
+  <!-- plugins:css -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/c35009fcc8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../vendors/base/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../../images/favicon.png" />
+	<style>
+		.form-control{
+			background:#e6e6e6;
+		  border-radius:5px;
+		  color:#444;
+			width:40%;
+			display:inline;
+		}
+	</style>
+</head>
+
+<body>
+	
+  <div class=" container-scroller">
+    <%- include("partials/navbar.ejs"); -%>
+      <!-- partial -->
+      <div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-12 grid-margin">
+              <div class="card">
+				  <span style="display:inline;margin:20px;font-weight:800;">Your bill is : <%= bill %></span>
+				  <form method="post" action="/paybill">
+					  <input type="number" value="<%= bill %>" name="bill" style="display:inline;margin:5px;" hidden>
+					  <input type="number" value="<%= mobile %>" name="mnumber" hidden>
+					  <br>
+					  <label for="promocode" style="display:inline;margin:5px;" >Apply Promocode</label>
+					  <input class="form-control" type="text" name="promocode">
+					  <br>
+					  <br>
+					  
+					  <img src="images/promos/20.png" alt="20% OFF YOUR PURCHASE" style="display:inline;margin:5px;">
+					  <img src="images/promos/100.png" alt="100 OFF YOUR PURCHASE">
+					  <br>
+					  <br>
+					  
+					  <button class="btn btn-lg btn-primary" type="submit" style="display:inline;margin:5px;">Proceed To Pay</button>
+					</div>
+				  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- partial:../../partials/_footer.html -->
+        <!-- partial -->
+      </div>
+    </div>
+
+  </div>
+  <!-- plugins:js -->
+  <script src="../../vendors/base/vendor.bundle.base.js"></script>
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/template.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Paytem Wallet</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
+	<script src="https://kit.fontawesome.com/c35009fcc8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../vendors/base/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="/moviecss/moviecss.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <style>
+	.input100 {
+    font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
+    font-size: 15px;
+    color: #444;
+    outline:none;
+	border:none;
+    display: block;
+    width: 60%;
+    background: #e6e6e6;
+    height: 50px;
+    border-radius:5px;
+    padding: 0 30px 0 68px;
+	margin: 10px 0 10px;
+  }
+	  h1 { color: #0A77BF; 
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-size: 70px; 
+		line-height: 160px; 
+		font-weight: normal;  
+		text-align: left; 
+		text-shadow: 0 1px 1px #fff; }
+  </style>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <%- include("partials/navbar.ejs"); -%>
+      <div class="main-panel">          
+        <div class="content-wrapper">
+			<h1>3.Select your seats.</h1>
+          <div class="row">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card">
+                <div onload="onLoaderFunc();">
+
+					<div class="inputForm">
+					<center>
+					  <input placeholder="Name" type="text" id="Username" class="input100" required>
+					  <input placeholder="Number of seats" type="number"  class="input100" id="Numseats" required>
+					  <br/><br/>
+					  <button class="btn btn-lg btn-primary" onclick="takeData()">Start Selecting</button>
+					</center>
+					</div>
+
+
+					<div class="seatStructure">
+					<center>
+
+					<table id="seatsBlock">
+					 <p id="notification"></p>
+					  <tr>
+						<td colspan="14"><div class="screen">SCREEN</div></td>
+						<td rowspan="20">
+						  <div class="smallBox greenBox">Selected Seat</div> <br/>
+						  <div class="smallBox redBox">Reserved Seat</div><br/>
+						  <div class="smallBox emptyBox">Empty Seat</div><br/>
+						</td>
+
+						<br/>
+					 </tr>
+
+					  <tr>
+						<td></td>
+						<%for( var i=1;i<=5;i++){%>
+							<td><%= i %></td>					
+						<%}%>
+						<td></td>
+						<%for( var i=0;i<7;i++){%>
+							<td><%= (6+i) %></td>					
+						<%}%>
+					</tr>
+
+					<tr>
+						<td>A</td>
+						<%for( var i=1;i<=5;i++){%>
+						<%if (list.includes("A"+i.toString())){%>
+						    <%console.log("Yo"+list)%>
+						     <td><input type="checkbox" class="seats" value="A<%= i %>" id="A<%= i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="A<%= i %>" id="A<%= i %>"></td>
+						<%}%>
+						<%}%>
+						
+						<td class="seatGap"></td>
+						<%for( var i=0;i<7;i++){%>
+						<%if (list.includes("A"+(6+i).toString())){%>
+						     <td><input type="checkbox" class="seats" value="A<%= 6+i %>" id="A<%= 6+i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="A<%= 6+i %>" id="A<%= 6+i %>"></td>
+						<%}%>					
+						<%}%>
+				  	</tr>
+
+					  <tr>
+						<td>B</td>
+						<%for( var i=1;i<=5;i++){%>
+							<%if (list.includes("B"+i.toString())){%>
+						    <%console.log("Yo"+list)%>
+						     <td><input type="checkbox" class="seats" value="B<%= i %>" id="B<%= i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="B<%= i %>" id="B<%= i %>"></td>
+						<%}%>
+						<%}%>
+						  
+						<td class="seatGap"></td>
+						<%for( var i=0;i<7;i++){%>
+							<%if (list.includes("A"+(6+i).toString())){%>
+						     <td><input type="checkbox" class="seats" value="B<%= 6+i %>" id="B<%= 6+i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="B<%= 6+i %>" id="B<%= 6+i %>"></td>
+						<%}%>				
+						<%}%>
+					  </tr>
+
+					  <tr>
+						<td>C</td>
+						<%for( var i=1;i<=5;i++){%>
+							<%if (list.includes("C"+i.toString())){%>
+						    <%console.log("Yo"+list)%>
+						     <td><input type="checkbox" class="seats" value="C<%= i %>" id="C<%= i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="C<%= i %>" id="C<%= i %>"></td>
+						<%}%>
+						<%}%>
+						
+						<td class="seatGap"></td>
+						<%for( var i=0;i<7;i++){%>
+							<%if (list.includes("C"+(6+i).toString())){%>
+						     <td><input type="checkbox" class="seats" value="C<%= 6+i %>" id="C<%= 6+i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="C<%= 6+i %>" id="C<%= 6+i %>"></td>
+						<%}%>					
+						<%}%>
+
+					</tr>
+
+					<tr>
+						<td>D</td>
+						<%for( var i=1;i<=5;i++){%>
+							<%if (list.includes("D"+i.toString())){%>
+						    <%console.log("Yo"+list)%>
+						     <td><input type="checkbox" class="seats" value="D<%= i %>" id="D<%= i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="D<%= i %>" id="D<%= i %>"></td>
+						<%}%>
+						<%}%>
+						
+						<td class="seatGap"></td>
+						<%for( var i=0;i<7;i++){%>
+							<%if (list.includes("D"+(6+i).toString())){%>
+						     <td><input type="checkbox" class="seats" value="D<%= 6+i %>" id="D<%= 6+i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="D<%= 6+i %>" id="D<%= 6+i %>"></td>
+						<%}%>					
+						<%}%>
+
+					</tr>
+
+					<tr>
+						<td>E</td>
+						<%for( var i=1;i<=5;i++){%>
+							<%if (list.includes("E"+i.toString())){%>
+						    <%console.log("Yo"+list)%>
+						     <td><input type="checkbox" class="seats" value="E<%= i %>" id="E<%= i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="E<%= i %>" id="E<%= i %>"></td>
+						<%}%>
+						<%}%>
+						
+						<td class="seatGap"></td>
+						<%for( var i=0;i<7;i++){%>
+							<%if (list.includes("E"+(6+i).toString())){%>
+						     <td><input type="checkbox" class="seats" value="E<%= 6+i %>" id="E<%= 6+i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="E<%= 6+i %>" id="E<%= 6+i %>"></td>
+						<%}%>					
+						<%}%>
+
+					</tr>
+
+					<tr class="seatVGap"></tr>
+
+					<tr>
+						<td>F</td>
+						<%for( var i=1;i<=5;i++){%>
+							<%if (list.includes("F"+i.toString())){%>
+						    <%console.log("Yo"+list)%>
+						     <td><input type="checkbox" class="seats" value="F<%= i %>" id="F<%= i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="F<%= i %>" id="F<%= i %>"></td>
+						<%}%>
+						<%}%>
+						
+						<td class="seatGap"></td>
+						<%for( var i=0;i<7;i++){%>
+							<%if (list.includes("F"+(6+i).toString())){%>
+						     <td><input type="checkbox" class="seats" value="F<%= 6+i %>" id="F<%= 6+i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="F<%= 6+i %>" id="F<%= 6+i %>"></td>
+						<%}%>					
+						<%}%>
+
+					</tr>
+
+					<tr>
+						<td>G</td>
+						<%for( var i=1;i<=5;i++){%>
+							<%if (list.includes("G"+i.toString())){%>
+						    <%console.log("Yo"+list)%>
+						     <td><input type="checkbox" class="seats" value="G<%= i %>" id="G<%= i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="G<%= i %>" id="G<%= i %>"></td>
+						<%}%>
+						<%}%>
+						
+						<td class="seatGap"></td>
+						<%for( var i=0;i<7;i++){%>
+							<%if (list.includes("G"+(6+i).toString())){%>
+						     <td><input type="checkbox" class="seats" value="G<%= 6+i %>" id="G<%= 6+i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="G<%= 6+i %>" id="G<%= 6+i %>"></td>
+						<%}%>					
+						<%}%>
+
+					</tr>
+
+					<tr>
+						<td>H</td>
+						<%for( var i=1;i<=5;i++){%>
+							<%if (list.includes("H"+i.toString())){%>
+						    <%console.log("Yo"+list)%>
+						     <td><input type="checkbox" class="seats" value="H<%= i %>" id="H<%= i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="H<%= i %>" id="H<%= i %>"></td>
+						<%}%>
+						<%}%>
+						
+						<td class="seatGap"></td>
+						<%for( var i=0;i<7;i++){%>
+							<%if (list.includes("H"+(6+i).toString())){%>
+						     <td><input type="checkbox" class="seats" value="H<%= 6+i %>" id="H<%= 6+i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="H<%= 6+i %>" id="H<%= 6+i %>"></td>
+						<%}%>					
+						<%}%>
+
+					</tr>
+
+					<tr>
+						<td>I</td>
+						<%for( var i=1;i<=5;i++){%>
+							<%if (list.includes("I"+i.toString())){%>
+						    <%console.log("Yo"+list)%>
+						     <td><input type="checkbox" class="seats" value="I<%= i %>" id="I<%= i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="I<%= i %>" id="I<%= i %>"></td>
+						<%}%>
+						<%}%>
+						
+						<td class="seatGap"></td>
+						<%for( var i=0;i<7;i++){%>
+						<%if (list.includes("I"+(6+i).toString())){%>
+						     <td><input type="checkbox" class="seats" value="I<%= 6+i %>" id="I<%= 6+i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="I<%= 6+i %>" id="I<%= 6+i %>"></td>
+						<%}%>					
+						<%}%>
+
+					</tr>
+
+					<tr>
+						<td>J</td>
+						<%for( var i=1;i<=5;i++){%>
+							<%if (list.includes("J"+i.toString())){%>
+						    <%console.log("Yo"+list)%>
+						     <td><input type="checkbox" class="seats" value="J<%= i %>" id="J<%= i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="J<%= i %>" id="J<%= i %>"></td>
+						<%}%>
+						<%}%>
+						
+						<td class="seatGap"></td>
+						<%for( var i=0;i<7;i++){%>
+							<%if (list.includes("A"+(6+i).toString())){%>
+						     <td><input type="checkbox" class="seats" value="J<%= 6+i %>" id="A]J<%= 6+i %>" disabled hidden></td>
+						   <%}else{%>
+						     <td><input type="checkbox" class="seats" value="J<%= 6+i %>" id="J<%= 6+i %>"></td>
+						<%}%>					
+						<%}%>
+
+					</tr>
+
+
+					</table>
+
+					<br/>
+					<button class="btn btn-lg btn-primary" onclick="updateTextArea()">Review Selection</button>
+					</center>
+					</div>
+
+					<br/><br/>
+
+					<div class="displayerBoxes">
+					<center>
+					  <table class="Displaytable">
+					  <tr>
+						<th>Name</th>
+						<th>Number of Seats</th>
+						<th>Seats</th>
+					  </tr>
+					  <tr>
+						<td><textarea id="nameDisplay"></textarea></td>
+						<td><textarea id="NumberDisplay"></textarea></td>
+						<td><textarea id="seatsDisplay"></textarea></td>
+					  </tr>
+					</table>
+						<form class="confirm" method="post" action="/moviebill">
+							<input name="movieName" value="<%=movieName%>" hidden>
+							<input name="theatreName" value="<%=theatreName%>" hidden>
+							<input name="cost" value="<%=cost%>" hidden>
+							<input class="seatList" name="seatList" value="" hidden>
+							<button type="submit" style="margin:10px;" class="btn btn-primary">Confirm</button>
+						</form>
+					</center>
+					</div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+	</div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha2564+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+  <script>
+		function onLoaderFunc()
+		{
+		  console.log($(".listContainer").val());
+		  $(".seatStructure *").prop("disabled", true);
+		  $(".displayerBoxes *").prop("disabled", true);
+		}
+		function takeData()
+		{
+		  if (( $("#Username").val().length == 0 ) || ( $("#Numseats").val().length == 0 ))
+		  {
+			  alert("Please Enter your Name and Number of Seats");
+		  }
+		  else
+		  {
+			$(".inputForm *").prop("disabled", true);
+			$(".seatStructure *").prop("disabled", false);
+			document.getElementById("notification").innerHTML = "<b style='margin-top:10px;margin-bottom:0px;background:#f6d743;'>Please Select your Seats NOW!</b>";
+		  }
+		}
+
+
+		function updateTextArea() { 
+
+		  if ($("input:checked").length == ($("#Numseats").val()))
+			{
+			  $(".seatStructure *").prop("disabled", true);
+
+			 var allNameVals = [];
+			 var allNumberVals = [];
+			 var allSeatsVals = [];
+
+			 //Storing in Array
+			 allNameVals.push($("#Username").val());
+			 allNumberVals.push($("#Numseats").val());
+			 $('#seatsBlock :checked').each(function() {
+			   allSeatsVals.push($(this).val());
+			 });
+
+			 //Displaying 
+			 $('#nameDisplay').val(allNameVals);
+			 $('#NumberDisplay').val(allNumberVals);
+			 $('#seatsDisplay').val(allSeatsVals);
+			 var seats = allSeatsVals.join("-");
+			 $('input.seatList').val(seats);
+			 // $('form.confirm').submit();
+			}
+		  else
+			{
+			  alert("Please select " + ($("#Numseats").val()) + " seats")
+			}
+		  }
+
+
+		function myFunction() {
+		  alert($("input:checked").length);
+		}
+
+		$(":checkbox").click(function() {
+		  if ($("input:checked").length == ($("#Numseats").val())) {
+			$(":checkbox").prop('disabled', true);
+			$(':checked').prop('disabled', false);
+		  }
+		  else
+			{
+			  $(":checkbox").prop('disabled', false);
+			}
+		});
+    </script>
+  <!-- endinject -->
+</body>
+</html>

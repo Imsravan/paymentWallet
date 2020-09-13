@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Product</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Paytm project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" src="/shopcss/bootstrap.min.css">
+<link src="/shopcss/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/shopcss/owl.carousel.css">
+<link rel="stylesheet" href="/shopcss/owl.theme.default.css">
+<link rel="stylesheet" href="/shopcss/animate.css">
+<link rel="stylesheet" href="/shopcss/product.css">
+<link rel="stylesheet" href="/shopcss/product_responsive.css">
+</head>
+<body>
+
+<div class="super_container">
+
+	<!-- Header -->
+
+	<%- include("partials/shopheader.ejs"); -%>
+	<!-- Menu -->
+	<%- include("partials/menu.ejs"); -%>	
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_container">
+			<div class="home_background" style="background-image:url(/images/categories.jpg);"></div>
+			<div class="home_content_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="home_content">
+								<div class="home_title">Smart Phones<span>.</span></div>
+								<div class="home_text"><p>Power of computing in your pocket.</p></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Product Details -->
+
+	<div class="product_details">
+		<div class="container">
+			<div class="row details_row">
+
+				<!-- Product Image -->
+				<div class="col-lg-6">
+					<div class="details_image">
+						<div class="details_image_large"><img src="<%= item.img %>" alt=""><div class="product_extra product_new"><a href="/categories">New</a></div></div>
+					</div>
+				</div>
+
+				<!-- Product Content -->
+				<div class="col-lg-6">
+					<div class="details_content">
+						<div class="details_name"><%= item.name %></div>
+						<!-- <div class="details_discount">$890</div> -->
+						<div class="details_price"><%= item.price %></div>
+
+						<!-- In Stock -->
+						<div class="in_stock_container">
+							<div class="availability">Availability:</div>
+							<span>In Stock</span>
+						</div>
+						<div class="details_text">
+							<p><%= item.description %></p>
+						</div>
+
+						<!-- Product Quantity -->
+						<div class="product_quantity_container">
+							<div class="product_quantity clearfix">
+								<span>Qty</span>
+								<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+								<div class="quantity_buttons">
+									<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+									<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+								</div>
+							</div>
+							<div class="button cart_button">
+								<a id="addTotag" href="/addToCart" onclick="event.preventDefault();document.getElementById('cart-form').submit((e)=>{
+									e.preventDefault();
+								});">Add to cart</a>
+								<form id="cart-form" action="/addToCart" method="post" style="display: none;" onsubmit="return false;">
+								<input type="text" name="objid" value="<%= item._id %>" hidden>
+								<input id="iq" type="text" pattern="[0-9]*" name="item_quantity" value="1" hidden>
+								</form>
+							</div>
+						</div>
+
+						<!-- Share -->
+						<div class="details_share">
+							<span>Share:</span>
+							<ul>
+								<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row description_row">
+				<div class="col">
+					<div class="description_title_container">
+						<div class="description_title">Description</div>
+						<div class="reviews_title"><a href="#">Reviews <span>(1)</span></a></div>
+					</div>
+					<div class="description_text">
+						<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris consequat nisi ut mauris efficitur lacinia.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Products -->
+
+	<div class="products">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="products_title">Related Products</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					
+					<div class="product_grid">
+
+						<% ritems.forEach(item => {%>
+							<div class="product">
+								<div class="product_image"><img src="<%=item.img %>" alt=""></div>
+								<div class="product_extra product_new"><a href="/categories">New</a></div>
+								<div class="product_content">
+									<div class="product_title">
+										<a href="/product/<%=item._id%>"><%=item.name%></a>
+									</div>
+									<div class="product_price">₹<%=item.price%></div>
+								</div>
+							</div>
+						<%});%>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer -->
+	<%-include("partials/shopfooter.ejs");-%>
+</div>
+<script src="/shopjs/jquery-3.2.1.min.js"></script>
+<script src="/shopjs/popper.js"></script>
+<script src="/shopjs/bootstrap.min.js"></script>
+<script src="/shopjs/TweenMax.min.js"></script>
+<script src="/shopjs/TimelineMax.min.js"></script>
+<script src="/shopjs/ScrollMagic.min.js"></script>
+<script src="/shopjs/animation.gsap.min.js"></script>
+<script src="/shopjs/ScrollToPlugin.min.js"></script>
+<script src="/shopjs/owl.carousel.js"></script>
+<script src="/shopjs/isotope.pkgd.min.js"></script>
+<script src="/shopjs/easing.js"></script>
+<script src="/shopjs/parallax.min.js"></script>
+<script src="/shopjs/product.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha2564+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+<script>
+	$('div#quantity_inc_button').on('click',()=>{
+		let quantity = parseInt($('input#iq').attr('value'));
+		quantity += 1;
+		$('input#iq').attr('value',String(quantity));
+		$('input#quantity_input').attr('value',String(quantity));
+		console.log($('input#iq').attr('value'));
+	});
+	$('div#quantity_dec_button').on('click',()=>{
+		let quantity = parseInt($('input#iq').attr('value'));
+		if(quantity===1){
+			$('div#quantity_dec_button').prop('disabled',true);
+			$('div#quantity_dec_button').children().prop('disabled',true);
+		}
+		else{
+			quantity -= 1;
+			$('input#iq').attr('value',String(quantity));
+			$('input#quantity_input').attr('value',String(quantity));
+			console.log('Decremented value : ',$('input#iq').attr('value'));
+		}
+	});
+</script>
+</body>
+</html>

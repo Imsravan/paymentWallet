@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Paytem Wallet</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+	<script src="https://kit.fontawesome.com/c35009fcc8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="vendors/base/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="images/favicon.png" />
+  <style>
+	  .inone{
+		  background:#e6e6e6;
+		  border-radius:5px;
+		  color:#444;
+	  }
+	  .inone::placeholder{
+		  color:#888;
+	  }
+  </style>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+	<%- include("partials/navbar.ejs"); -%>
+    <!-- partial -->
+      <div class="main-panel">          
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card">
+                <div class="row">
+                  <div class="col-md-7">
+                    <div class="card-body">
+						<div class='box' style="text-align: center" class="heading1" style="position: relative;">
+
+							<h4 class="add">Click to add money to wallet</h4>
+
+							<h4>Available balance <%= ab %></h4>
+						</div>
+                    </div>
+                  </div> 
+                  <div class="col-md-5">
+                    <div class="card-body">
+                       <form  method="POST" action="/money"> 
+							<input class="inone form-control" type="number" name="price" value="" placeholder="Enter amount" required>
+							<br>
+							<button class="intwo btn btn-primary" type="submit" style="margin-top:5px;">Proceed to Add Money</button>
+						</form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->        
+		<!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha2564+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+</body>
+
+</html>

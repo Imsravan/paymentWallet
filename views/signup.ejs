@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Paytm Sign-Up</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="losupcss/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="losupcss/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="losupcss/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/c35009fcc8.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="losupcss/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="losupcss/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="losupcss/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="losupcss/util.css">
+	<link rel="stylesheet" type="text/css" href="losupcss/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="losupcss/user.png" alt="IMG">
+                </div>
+                
+                <form class="login100-form validate-form" action="/auth2" method="POST">
+                    <span class="login100-form-title" style="color: #035aa6;padding-bottom: 5px;">
+                            Paytm Wallet
+                    </span>
+					<span class="login100-form-title">
+						User Signup
+                    </span>
+                    
+                    <div class="wrap-input100 validate-input" data-validate = "Null values not accepted">
+                            <input class="input100" type="text" name="fname" placeholder="First Name" pattern="[a-zA-Z]{3,20}">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                            </span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate = "Null values not accepted">
+                            <input class="input100" type="text" name="lname" placeholder="Last Name" pattern="[a-zA-Z]{3,20}">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                            </span>
+                    </div>
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" placeholder="Email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" autocomplete="off">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate = "Valid number is required: Enter a 10 digit number">
+                            <input class="input100" type="tel" name="contact" placeholder="Phone Number" pattern="[6-9][0-9]{9}">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fas fa-mobile" aria-hidden="true"></i>
+                            </span>
+                    </div>
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password" placeholder="password" pattern="^[a-zA-Z]\w{6,20}$" autocomplete="off" onclick="alert('first character must be a letter, it must contain at least 6 characters and no more than 20 characters and no characters other than letters, numbers and the underscore may be used')">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input">
+                            <input class="input100" type="text" name="address" placeholder="Address" pattern="^[#.0-9a-zA-Z\s,-]+$">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fas fa-address-book" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							CREATE ACCOUNT
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+<!--===============================================================================================-->
+	<script src="losupjs/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="losupjs/popper.js"></script>
+	<script src="losupjs/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="losupjs/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="losupjs/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="losupjs/main_login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+  <div class="navbar-brand-wrapper d-flex justify-content-center">
+	<div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
+	  <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo"/></a>
+	  <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+	</div>  
+  </div>
+  <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+	<ul class="navbar-nav mr-lg-4 w-100">
+	  <li class="nav-item nav-search d-none d-lg-block w-100">
+		<div class="input-group">
+		  <div class="input-group-prepend">
+			<span class="input-group-text" id="search">
+			  <i class="fas fa-search"></i>
+			</span>
+		  </div>
+		  <input type="text" class="form-control" placeholder="Search now" aria-label="search" aria-describedby="search">
+		</div>
+	  </li>
+	</ul>
+	<ul class="navbar-nav navbar-nav-right">
+	  <li class="nav-item nav-profile dropdown">
+		<a class="nav-link" href="/profile" id="profileDropdown">
+		  <img src="images/faces/face5.jpg" alt="profile"/>
+		  <span class="nav-profile-name">Username</span>
+		</a>
+		<a class="dropdown-item" href="/logout">
+			<i class="fas fa-sign-out-alt text-primary"></i>
+			Logout
+		</a>
+	  </li>
+	</ul>
+	<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+	  <span class="mdi mdi-menu"></span>
+	</button>
+  </div>
+</nav>
+<!-- partial -->
+<div class="container-fluid page-body-wrapper">
+  <!-- partial:../../partials/_sidebar.html -->
+	<nav class="sidebar sidebar-offcanvas" id="sidebar">
+	<ul class="nav">
+	  <li class="nav-item">
+		<a class="nav-link" href="/home">
+			<i class="fas fa-user" style="margin: 10px;font-size:24px;"></i>
+		  <span class="menu-title">Dashboard</span>
+		</a>
+	  </li>
+	<li class="nav-item">
+		<a class="nav-link" href="/wallet">
+		  <i class="fas fa-wallet fa-xs" style="margin: 10px;font-size:24px;" ></i>
+		  <span class="menu-title">Wallet</span>
+		</a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" href="/shop">
+		  <i class="fas fa-shopping-cart fa-xs" style="margin: 10px;font-size:24px;"></i>
+		  <span class="menu-title">Shop</span>
+		</a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" href="/mobileRecharge">
+		  <i class="fas fa-mobile fa-xs" style="margin: 10px;font-size:24px;" ></i>
+		  <span class="menu-title">Mobile Recharge</span>
+		</a>
+	  </li>
+	   <li class="nav-item">
+		<a class="nav-link" href="/movielist" style="margin: 8px;font-size:24px;" aria-controls="auth">
+		  <i class="fas fa-ticket-alt"></i>
+		  <span class="menu-title" style="padding-left:6px;">Movie Ticket Booking</span>
+		</a>
+	  </li>
+	</ul>
+  </nav>

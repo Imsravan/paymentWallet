@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Paytem Wallet Profile</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
+<script src="https://kit.fontawesome.com/c35009fcc8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../vendors/base/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <style>
+	  input.form-control{
+		  background:#e6e6e6;
+		  border-radius:5px;
+		  color:#444;
+		  width:60%;
+	  }
+	  input.form-control:placeholder{
+		  color:#888;
+	  }
+	  div.data{
+		  display:inline;
+		  margin:10px;
+	  }
+  </style>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <%- include("partials/navbar.ejs"); -%>
+    <!-- partial -->
+      <div class="main-panel">          
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-8 grid-margin stretch-card">
+				<div class="card">
+				   <div class="card-body">
+						 <h3 style="margin-left:40%;">Information</h3>
+							<form action="/edituser" method="POST">
+							<div class="info_data">
+							<div class="data">
+							<h4>Email</h4>
+							<input class="form-control" id="email" name="email" placeholder="<%=use.email%>" value="<%=use.email%>" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" disabled>
+							</div>
+							<div class="data">
+							<h4>Phone</h4>
+							<input class="form-control" id="mobile" name="ph" placeholder="<%=use.ph_no%>" value="<%=use.ph_no%>" pattern="[6-9][0-9]{9}" disabled>
+							</div>
+							</div>
+							<br>
+							<br>
+							<div class="info">
+
+							<div class="info_data">
+							<div class="data">
+							<h4>Date Of Birth</h4>
+							<input class="form-control" id="dob" type="date" name="dob" placeholder="<%=use.dob%>" value="<%=use.dob%>" disabled>
+							</div>
+							<div class="data">
+							<h4>Address</h4>
+							<input class="form-control" id="address" name="address" placeholder="<%=use.address%>" value="<%=use.address%>" pattern="^[#.0-9a-zA-Z\s,-]+$" disabled>
+							</div>
+							</div>
+							</div>
+							<button class="save btn btn-primary" style="margin-top:5px;" type="submit">Save</button> 
+
+							</form>
+                    </div>
+				</div>
+            </div>
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+					<h3>Upload Documents</h3> 
+						<form action="/upload" method="POST" enctype="multipart/form-data">
+							<label class="btn btn-outline-primary">
+							Choose file<input class="" type="file" name="uploadedFile" hidden/> 
+							</label>
+							<br /> <br />
+						  <input class="btn btn-primary" type="submit" value="Upload File" />
+					  </form>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->        
+<!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="../../vendors/base/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/template.js"></script>
+	<script>
+   function enableFields(){
+    $("input#email,input#dob,input#mobile,input#address").attr("disabled",false);
+   }
+</script>
+  <!-- endinject -->
+</body>
+
+</html>
